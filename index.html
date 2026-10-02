@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern Application Development - II</title>
+  <meta name="description" content="Modern Application Development - II: a review of MAD-I, then JavaScript history, syntax and the DOM API.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+
+<!-- Pixel sprites reused across the page -->
+<svg class="sprites" aria-hidden="true" focusable="false">
+  <symbol id="cloud" viewBox="0 0 16 4">
+    <path fill="#ffffff" d="M3 0h3v1H3z M8 0h4v1H8z M2 1h11v1H2z M1 2h14v1H1z M0 3h16v1H0z"/>
+    <path fill="#d4ecfb" d="M0 3h16v1H0z"/>
+  </symbol>
+  <symbol id="star" viewBox="0 0 5 5">
+    <path fill="#ffc233" d="M2 0h1v5H2z M0 2h5v1H0z"/>
+    <path fill="#fff6c8" d="M2 2h1v1H2z"/>
+  </symbol>
+</svg>
+
+<div class="sky" aria-hidden="true">
+  <svg class="cloud c1"><use href="#cloud"/></svg>
+  <svg class="cloud c2"><use href="#cloud"/></svg>
+  <svg class="cloud c3"><use href="#cloud"/></svg>
+  <svg class="cloud c4"><use href="#cloud"/></svg>
+</div>
+
+<header class="hud">
+  <div class="hud-inner">
+    <a class="brand" href="#top">
+      <svg class="brand-star" aria-hidden="true"><use href="#star"/></svg>
+      <abbr title="Modern Application Development - II">MAD-II</abbr>
+    </a>
+    <nav aria-label="Worlds">
+      <a href="#world-1">1 Review</a>
+      <a href="#world-2">2 JavaScript</a>
+      <a href="#world-3">3 Syntax</a>
+      <a href="#world-4">4 DOM API</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO (slide 1) ============ -->
+  <section class="hero" id="top">
+    <svg class="star st1" aria-hidden="true"><use href="#star"/></svg>
+    <svg class="star st2" aria-hidden="true"><use href="#star"/></svg>
+    <svg class="star st3" aria-hidden="true"><use href="#star"/></svg>
+
+    <div class="hero-text">
+      <h1 class="title">
+        <span style="--i:0;--c:#ff7b7b">Modern</span>
+        <span style="--i:1;--c:#ffd23f">Application</span>
+        <span style="--i:2;--c:#7fe3b0">Development</span>
+        <span style="--i:3;--c:#8ecae6">- II</span>
+      </h1>
+      <p><a class="btn go" href="#world-1">Start reading</a></p>
+      <ul class="world-links">
+        <li><a href="#world-1">World 1: Review &amp; Roadmap</a></li>
+        <li><a href="#world-2">World 2: JavaScript</a></li>
+        <li><a href="#world-3">World 3: JavaScript Syntax</a></li>
+        <li><a href="#world-4">World 4: DOM API</a></li>
+      </ul>
+    </div>
+
+    <div class="mascot">
+      <p class="bubble">Hello world</p>
+      <svg class="robot" viewBox="0 0 12 12" role="img" aria-label="A friendly pixel robot" shape-rendering="crispEdges">
+        <rect x="5" y="0" width="2" height="1" fill="#ff7b7b"/>
+        <rect x="2" y="3" width="8" height="7" fill="#8ecae6"/>
+        <path fill="#2b2d42" d="M5 1h2v1H5z M2 2h8v1H2z M1 3h1v7H1z M10 3h1v7h-1z M2 10h8v1H2z M3 4h2v2H3z M7 4h2v2H7z M4 8h1v1H4z M7 8h1v1H7z M5 9h2v1H5z M3 11h2v1H3z M7 11h2v1H7z"/>
+        <path fill="#ffffff" d="M3 4h1v1H3z M7 4h1v1H7z"/>
+        <path fill="#ffb3d1" d="M3 7h1v1H3z M8 7h1v1H8z"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ============ WORLD 1 : slides 2 to 4 ============ -->
+  <section class="world w1" id="world-1">
+    <header class="world-head">
+      <div class="world-title">
+        <span class="badge">World 1</span>
+        <h2>Review &amp; Roadmap</h2>
+      </div>
+    </header>
+
+    <div class="grid">
+
+      <!-- Slide 2 -->
+      <article class="slide s-12" id="slide-02">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🔁</span>Review of MAD-I</h3>
+          <span class="no" title="Slide 2">02</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-3">
+            <div class="topic">
+              <h4>What is an app (at least in our context):</h4>
+              <ul class="bullets">
+                <li>An application or program used for interacting with a computing system</li>
+                <li>Allow the user to perform some tasks useful to them</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4>Components:</h4>
+              <ul class="bullets">
+                <li><strong>Backend:</strong> Store data, processing logic, relation between data elements etc.</li>
+                <li><strong>Frontend:</strong> User-facing views, abstract for machine interaction</li>
+                <li>Naturally implies a client-server or request-response type of architecture</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4>Why Web:</h4>
+              <ul class="bullets">
+                <li>Close to universal platform with clear client-server architecture</li>
+                <li>Low barrier to entry - trivial to implement simple pages and interaction</li>
+                <li>High degree of flexibility - possible to implement highly complex systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="slide s-12" id="slide-03">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🧱</span>Review of the Web Application Development Model</h3>
+          <span class="no" title="Slide 3">03</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4>Presentation</h4>
+              <p><abbr title="HyperText Markup Language">HTML</abbr> for semantic content, <abbr title="Cascading Style Sheets">CSS</abbr> for styling</p>
+            </div>
+            <div class="topic">
+              <h4>Logic</h4>
+              <p>Backend logic highly flexible - we used Python with Flask</p>
+            </div>
+          </div>
+          <div class="topics cols-3">
+            <div class="topic">
+              <h4>Application architecture:</h4>
+              <ul class="bullets">
+                <li>Model - View - Controller. Good compromise between understandability and flexibility</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4>System architecture:</h4>
+              <ul class="bullets">
+                <li><abbr title="Representational State Transfer">REST</abbr> principles + sessions - how to build stateful applications over stateless protocols</li>
+                <li><abbr title="Application Programming Interfaces">APIs</abbr>: separate data from view</li>
+                <li>RESTful? APIs - useful for basic understanding, but not strict adherence to REST</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4>Others:</h4>
+              <ul class="bullets">
+                <li>Security, Validation, Logins and <abbr title="Role-Based Access Control">RBAC</abbr>, database and frontend choices etc.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 4 -->
+      <article class="slide s-12" id="slide-04">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🚀</span>Moving Forward</h3>
+          <span class="no" title="Slide 4">04</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4>Advanced Frontend Development</h4>
+              <ul class="bullets">
+                <li>Exploring JavaScript and how to use it</li>
+                <li>JavaScript, APIs, Markup - the JAMStack</li>
+                <li>VueJS as a candidate frontend framework</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4>Other topics of interest</h4>
+              <ul class="bullets">
+                <li>Asynchronous messaging, Email</li>
+                <li>Mobile / Standalone apps, <abbr title="Progressive Web App">PWA</abbr>/<abbr title="Single-Page Application">SPA</abbr></li>
+                <li>Performance measurement, benchmarking, optimization</li>
+                <li>Alternatives to REST</li>
+                <li>etc.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============ WORLD 2 : slides 5 to 14 ============ -->
+  <section class="world w2" id="world-2">
+    <header class="world-head" id="slide-05">
+      <div class="world-title">
+        <span class="badge">World 2</span>
+        <h2>JavaScript</h2>
+        <span class="no" title="Slide 5">05</span>
+      </div>
+      <ol class="path">
+        <li><span>A little history</span></li>
+        <li><span>Implications of origins</span></li>
+        <li>
+          <span>Writing and Running code</span>
+          <ul class="mini"><li>Terminal</li><li><abbr title="Document Object Model">DOM</abbr></li></ul>
+        </li>
+        <li><span>References</span></li>
+      </ol>
+    </header>
+
+    <div class="grid">
+
+      <!-- Slide 6 -->
+      <article class="slide s-6" id="slide-06">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🕰️</span>Origins</h3>
+          <span class="no" title="Slide 6">06</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Originally created in <mark>1995</mark> as scripting language for Netscape Navigator</li>
+            <li>Intended as “glue” language
+              <ul>
+                <li>Stick modules from other languages together</li>
+                <li>Not really meant for much code</li>
+              </ul>
+            </li>
+            <li>Primarily meant to assist “applets” in Java - hence JavaScript
+              <ul>
+                <li>Trademark issues, name changes, …</li>
+              </ul>
+            </li>
+            <li>Issues:
+              <ul>
+                <li><span class="sticker warn">Slow</span></li>
+                <li><span class="sticker warn">Limited capability</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 7 -->
+      <article class="slide s-6" id="slide-07">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">⚡</span>Power</h3>
+          <span class="no" title="Slide 7">07</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Glue was useful, but…</li>
+            <li>Then Google Maps, Google Suggest etc. (~ <mark>2005</mark>)
+              <ul>
+                <li>Pan around map, zoom in/out seamlessly - fluid user interface:</li>
+                <li><span class="sticker tip">Load only what is needed!</span></li>
+              </ul>
+            </li>
+            <li>Described and Named Ajax - Garrett <mark>2005</mark>
+              <ul>
+                <li>Asynchronous Javascript and XML</li>
+              </ul>
+            </li>
+            <li>Allowed true “web applications” that behave like desktop applications</li>
+            <li>Evolved considerably since then
+              <ul>
+                <li>Much more on this approach moving forward</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 8 -->
+      <article class="slide s-6" id="slide-08">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">📜</span>Standardization</h3>
+          <span class="no" title="Slide 8">08</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Move beyond Netscape needed</li>
+            <li>ECMA (European Computer Manufacturers Association) - standard 262</li>
+            <li>Subsequently called ECMAScript
+              <ul>
+                <li>Avoid trademark issues with Java</li>
+              </ul>
+            </li>
+            <li>In practice:
+              <ul>
+                <li>Language standard called ECMAScript (versions)</li>
+                <li>Implementation and use: JavaScript</li>
+              </ul>
+            </li>
+            <li>Significant changes in <abbr title="ECMAScript 2015">ES6</abbr> - <mark>2015</mark>
+              <ul>
+                <li>Yearly releases since then</li>
+                <li>“Feature readiness” oriented approach</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 9 -->
+      <article class="slide s-6" id="slide-09">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🧭</span>What version to use?</h3>
+          <span class="no" title="Slide 9">09</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>ES6 has most features of modern languages (modules, scoping, class etc.)</li>
+            <li>Some older browsers may not support all of this</li>
+          </ul>
+          <div class="topic">
+            <h4>Possible approaches:</h4>
+            <ul class="bullets">
+              <li>Ignore old browsers and ask user to upgrade</li>
+              <li>Package browser along with application - useful for limited cases, like VSCode (Electron apps)</li>
+              <li><strong>Polyfills:</strong> include libraries that emulate newer functionality for older browsers</li>
+              <li><strong>Compilers:</strong> BabelJS - convert new code to older compatible versions</li>
+            </ul>
+          </div>
+          <div class="topic">
+            <h4>Backend</h4>
+            <ul class="bullets">
+              <li>Node.js, Deno: directly use JS as a scripting language like Python</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 10 -->
+      <article class="slide s-12" id="slide-10">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🧬</span>Implications of JS Origins</h3>
+          <span class="no" title="Slide 10">10</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-3">
+            <div class="topic">
+              <p class="lead">Ease of use given priority over performance (to start with)</p>
+            </div>
+            <div class="topic">
+              <p class="lead">Highly tolerant of errors - fail silently</p>
+              <ul class="bullets">
+                <li><span class="sticker warn">Debugging difficult!</span></li>
+                <li>Strict mode: <code>"use strict";</code></li>
+              </ul>
+            </div>
+            <div class="topic">
+              <p class="lead">Ambiguous syntax variants</p>
+              <ul class="bullets">
+                <li>Automatic semicolon insertion</li>
+                <li>Object literals vs Code blocks <code>{}</code></li>
+                <li>Function: statement or expression? Impacts parsing</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <p class="lead">Limited <abbr title="Input/Output">IO</abbr> support: errors “logged” to “console”</p>
+            </div>
+            <div class="topic">
+              <p class="lead">Closely integrates with presentation layer: DOM APIs</p>
+            </div>
+            <div class="topic">
+              <p class="lead">Asynchronous processing and the Event Loop - very powerful!</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 11 -->
+      <article class="slide s-6" id="slide-11">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">▶️</span>Using JS</h3>
+          <span class="no" title="Slide 11">11</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Not originally meant for direct scripting
+              <ul>
+                <li>Usually not run from command line like Python for instance</li>
+              </ul>
+            </li>
+            <li>Need HTML file to load the JS as a script
+              <ul>
+                <li>Requires browser to serve the files</li>
+                <li>Links and script tags etc.</li>
+                <li>May not directly work when loaded as a file</li>
+              </ul>
+            </li>
+            <li>NodeJS allows execution from command line</li>
+          </ul>
+          <p class="note">Examples here will be shown on Replit for the most part</p>
+        </div>
+      </article>
+
+      <!-- Slide 12 -->
+      <article class="slide s-6" id="slide-12">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🌳</span>DOM</h3>
+          <span class="no" title="Slide 12">12</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Document Object Model
+              <ul>
+                <li>Structure of the document shown on the browser</li>
+              </ul>
+            </li>
+            <li>DOM can be manipulated through JS APIs</li>
+            <li>One of the most powerful aspects of JavaScript</li>
+            <li>Input: clicks, textboxes, mouseover, …</li>
+            <li>Output: text, colours/styles, drawing, ...</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 13 -->
+      <article class="slide s-6" id="slide-13">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">📚</span>References</h3>
+          <span class="no" title="Slide 13">13</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>JavaScript for impatient programmers - <a href="https://exploringjs.com" target="_blank" rel="noopener">exploringjs.com</a>
+              <ul>
+                <li>detailed reference material, focused on language, not frontend or <abbr title="Graphical User Interface">GUI</abbr> - very up to date</li>
+              </ul>
+            </li>
+            <li>Mozilla Developer Network
+              <ul>
+                <li>several examples and compatibility hints</li>
+              </ul>
+            </li>
+            <li>Learn JavaScript Online - interactive tutorial</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 14 -->
+      <article class="slide s-6" id="slide-14">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🧰</span>Utilities</h3>
+          <span class="no" title="Slide 14">14</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li><a href="https://babeljs.io" target="_blank" rel="noopener">BabelJS</a> - Compiler converts new JS to older compatible forms</li>
+            <li>JS Console - interactive console to try out code</li>
+            <li><a href="https://replit.com" target="_blank" rel="noopener">Replit</a> - complete application development</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============ WORLD 3 : slides 15 to 28 ============ -->
+  <section class="world w3" id="world-3">
+    <header class="world-head" id="slide-15">
+      <div class="world-title">
+        <span class="badge">World 3</span>
+        <h2>JavaScript Syntax</h2>
+        <span class="no" title="Slide 15">15</span>
+      </div>
+      <ol class="path">
+        <li><span>Program structure, Comments</span></li>
+        <li><span>Identifiers, Statements, Expressions</span></li>
+        <li>
+          <span>Data Types and Variables</span>
+          <ul class="mini"><li>Strings and Templates</li></ul>
+        </li>
+        <li><span>Control Flow</span></li>
+        <li><span>Functions</span></li>
+      </ol>
+    </header>
+
+    <div class="grid">
+
+      <!-- Slide 16 -->
+      <article class="slide s-12" id="slide-16">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🖥️</span>Basic Frontend Usage</h3>
+          <span class="no" title="Slide 16">16</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-3">
+            <div class="topic">
+              <p class="lead">Frontend JavaScript: must be invoked from HTML page</p>
+              <ul class="bullets">
+                <li>In context of a “Document”</li>
+                <li>will not execute if loaded directly</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <p class="lead">Scripting language - no compilation step</p>
+            </div>
+            <div class="topic">
+              <p class="lead">Loosely structured - no specific header, body etc.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 17 -->
+      <article class="slide s-12" id="slide-17">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🔤</span>Identifiers - the words of the language</h3>
+          <span class="no" title="Slide 17">17</span>
+        </header>
+        <div class="body">
+          <div class="topic">
+            <h4>Reserved words:</h4>
+            <ul class="chips reserved">
+              <li>await</li><li>break</li><li>case</li><li>catch</li><li>class</li><li>const</li>
+              <li>continue</li><li>debugger</li><li>default</li><li>delete</li><li>do</li><li>else</li>
+              <li>export</li><li>extends</li><li>finally</li><li>for</li><li>function</li><li>if</li>
+              <li>import</li><li>in</li><li>instanceof</li><li>let</li><li>new</li><li>return</li>
+              <li>static</li><li>super</li><li>switch</li><li>this</li><li>throw</li><li>try</li>
+              <li>typeof</li><li>var</li><li>void</li><li>while</li><li>with</li><li>yield</li>
+            </ul>
+          </div>
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4>Literals (values)</h4>
+              <ul class="chips lit">
+                <li>true</li><li>false</li><li>null</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4>Others to avoid</h4>
+              <ul class="chips avoid">
+                <li>enum</li><li>implements</li><li>package</li><li>protected</li><li>interface</li>
+                <li>private</li><li>public</li><li>Infinity</li><li>NaN</li><li>undefined</li><li>async</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 18 -->
+      <article class="slide s-12" id="slide-18">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🧮</span>Statements and Expressions</h3>
+          <span class="no" title="Slide 18">18</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4>Expression</h4>
+              <p>Piece of code that can be executed to obtain a value to be returned</p>
+              <figure class="code">
+                <figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>expression</figcaption>
+                <pre><code>x = <span class="n">10</span>;
+<span class="s">"Hello world"</span></code></pre>
+              </figure>
+              <p>Anywhere you need a “value” - function argument, math expression etc.</p>
+            </div>
+            <div class="topic">
+              <h4>Statement</h4>
+              <p>Piece of code that can be executed</p>
+              <figure class="code">
+                <figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>statement</figcaption>
+                <pre><code><span class="k">if</span> ( … ) {
+  <span class="c">// do something</span>
+}</code></pre>
+              </figure>
+              <p>Standalone operation or side effects</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 19 -->
+      <article class="slide s-12" id="slide-19">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🧩</span>Data Types</h3>
+          <span class="no" title="Slide 19">19</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-3">
+            <div class="topic">
+              <h4>Primitive data types:</h4>
+              <p>built into the language</p>
+              <ul class="chips lit">
+                <li>undefined</li><li>null</li><li>boolean</li><li>number</li><li>string</li>
+              </ul>
+              <p class="plus">(+ <code>bigint</code>, <code>symbol</code>)</p>
+            </div>
+            <div class="topic">
+              <h4>Objects:</h4>
+              <p>Compound pieces of data</p>
+            </div>
+            <div class="topic">
+              <h4>Functions</h4>
+              <ul class="bullets">
+                <li>Can be handled like objects</li>
+                <li>Objects can have functions: methods</li>
+                <li>Functions can have objects<span class="sticker warn">???</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 20 -->
+      <article class="slide s-6" id="slide-20">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🔡</span>Strings</h3>
+          <span class="no" title="Slide 20">20</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Source code is expected to be in Unicode
+              <ul>
+                <li>most engines expect UTF-16 encoding</li>
+              </ul>
+            </li>
+            <li>String functions like length can give surprising results on non-ASCII words</li>
+            <li>Can have variables in other languages!
+              <ul>
+                <li>But best avoided… keep readability in mind</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 21 -->
+      <article class="slide s-6" id="slide-21">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🕳️</span>Non-Values</h3>
+          <span class="no" title="Slide 21">21</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4><code>undefined</code></h4>
+              <ul class="bullets">
+                <li>Usually implies not initialized</li>
+                <li>Default unknown state</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <h4><code>null</code></h4>
+              <ul class="bullets">
+                <li>Explicitly set to a non-value</li>
+              </ul>
+            </div>
+          </div>
+          <p class="callout">Very similar and may be used interchangeably in most places - Keep context in mind when using for clarity of code</p>
+        </div>
+      </article>
+
+      <!-- Slide 22 -->
+      <article class="slide s-6" id="slide-22">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">⚖️</span>Operators and Comparisons</h3>
+          <span class="no" title="Slide 22">22</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Addition, subtraction etc.
+              <ul>
+                <li>Numbers, Strings</li>
+              </ul>
+            </li>
+            <li>Coercion
+              <ul>
+                <li>Convert to similar type where operation is defined</li>
+                <li><span class="sticker warn">Can lead to problems - needs care</span></li>
+              </ul>
+            </li>
+            <li>Comparison:
+              <ul>
+                <li>Loose equality: <code>==</code> tries to coerce</li>
+                <li>Strict equality: <code>===</code> no coercion</li>
+              </ul>
+            </li>
+            <li>Important for iteration, conditions</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 23 -->
+      <article class="slide s-6" id="slide-23">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">📦</span>Variables and Scoping</h3>
+          <span class="no" title="Slide 23">23</span>
+        </header>
+        <div class="body">
+          <ul class="bullets">
+            <li>Any non-reserved identifier can be used as a “placeholder” or “variable”</li>
+            <li>Scope:
+              <ul>
+                <li>Should the variable be visible everywhere in all scripts or only in a specific area?</li>
+                <li>Namespaces and limiting scope</li>
+              </ul>
+            </li>
+            <li><code>let</code>, <code>const</code> are used for declaring variables
+              <ul>
+                <li>Unlike Python, variables MUST be declared</li>
+                <li>Unlike C, their type need NOT be declared</li>
+                <li><code>var</code> was originally used for declaring variables, but has function level scope - <span class="sticker warn">avoid</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Slide 24 -->
+      <article class="slide s-6" id="slide-24">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🔒</span>let and const</h3>
+          <span class="no" title="Slide 24">24</span>
+        </header>
+        <div class="body">
+          <div class="topic">
+            <p class="lead"><code>const</code>: declares an immutable object</p>
+            <ul class="bullets">
+              <li>Value cannot be changed once assigned</li>
+              <li>But only within scope</li>
+            </ul>
+          </div>
+          <div class="topic">
+            <p class="lead"><code>let</code>: variable that can be updated</p>
+            <ul class="bullets">
+              <li>index variable in for loops</li>
+              <li>general variables</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 25 -->
+      <article class="slide s-6" id="slide-25">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🔀</span>Control Flow</h3>
+          <span class="no" title="Slide 25">25</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4>Conditional execution:</h4>
+              <ul class="chips lit"><li>if</li><li>else</li></ul>
+            </div>
+            <div class="topic">
+              <h4>Iteration</h4>
+              <ul class="chips lit"><li>for</li><li>while</li></ul>
+            </div>
+            <div class="topic">
+              <h4>Change in flow</h4>
+              <ul class="chips lit"><li>break</li><li>continue</li></ul>
+            </div>
+            <div class="topic">
+              <h4>Choice</h4>
+              <ul class="chips lit"><li>switch</li></ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 26 -->
+      <article class="slide s-12" id="slide-26">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">⚙️</span>Functions</h3>
+          <span class="no" title="Slide 26">26</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-3">
+            <div class="topic">
+              <p class="lead">Reusable block of code</p>
+            </div>
+            <div class="topic">
+              <p class="lead">Can take parameters or arguments and perform computation</p>
+            </div>
+            <div class="topic">
+              <p class="lead">Functions are themselves objects that can be assigned!</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 27 -->
+      <article class="slide s-12" id="slide-27">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">✏️</span>Function Notation</h3>
+          <span class="no" title="Slide 27">27</span>
+        </header>
+        <div class="body">
+          <div class="codes">
+            <figure class="code">
+              <figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>Regular declaration</figcaption>
+              <pre><code><span class="k">function</span> <span class="f">add</span>(x, y)
+{
+  <span class="k">return</span> x + y;
+}
+<span class="c">// Statement</span></code></pre>
+            </figure>
+            <figure class="code">
+              <figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>Named variable</figcaption>
+              <pre><code><span class="k">let</span> <span class="f">add</span> =
+<span class="k">function</span>(x, y) {
+  <span class="k">return</span> x + y;
+}
+<span class="c">// Expression</span></code></pre>
+            </figure>
+            <figure class="code">
+              <figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>Arrow function</figcaption>
+              <pre><code><span class="k">let</span> <span class="f">add</span> =
+(x, y) =&gt; x + y;
+<span class="c">// Expression</span></code></pre>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 28 -->
+      <article class="slide s-12" id="slide-28">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🎭</span>Anonymous functions and <abbr title="Immediately Invoked Function Expressions">IIFEs</abbr></h3>
+          <span class="no" title="Slide 28">28</span>
+        </header>
+        <div class="body">
+          <figure class="code">
+            <figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>anonymous functions</figcaption>
+            <pre><code><span class="k">let</span> x = <span class="k">function</span> () { <span class="k">return</span> <span class="s">"hello"</span>} <span class="c">// Anonymous bound</span>
+(<span class="k">function</span> () { <span class="k">return</span> <span class="s">"hello"</span> }()) <span class="c">// Declare and invoke</span></code></pre>
+          </figure>
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4>Why?</h4>
+              <p>Older JS versions did not have good scoping rules.</p>
+            </div>
+            <div class="topic">
+              <p class="lead"><span class="sticker warn">Avoid IIFEs in modern code - poor readability</span></p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============ WORLD 4 : slides 29 and 30 ============ -->
+  <section class="world w4" id="world-4">
+    <header class="world-head" id="slide-29">
+      <div class="world-title">
+        <span class="badge">World 4</span>
+        <h2>DOM API</h2>
+        <span class="no" title="Slide 29">29</span>
+      </div>
+      <ol class="path">
+        <li><span>User Interaction</span></li>
+        <li><span>Examples</span></li>
+      </ol>
+    </header>
+
+    <div class="grid">
+
+      <!-- Slide 30 -->
+      <article class="slide s-12" id="slide-30">
+        <header class="bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <h3><span class="ico" aria-hidden="true">🖱️</span>Interaction</h3>
+          <span class="no" title="Slide 30">30</span>
+        </header>
+        <div class="body">
+          <div class="topics cols-2">
+            <div class="topic">
+              <h4><code>console.log</code> is very limited</h4>
+              <ul class="bullets">
+                <li>variants for error logging etc.</li>
+                <li>But mostly useful only for limited form of debugging - not production use</li>
+              </ul>
+            </div>
+            <div class="topic">
+              <p class="lead">But JS was designed for document manipulation!</p>
+            </div>
+          </div>
+          <div class="io">
+            <div class="io-card">
+              <h4>Inputs from DOM</h4>
+              <p>mouse, text, clicks</p>
+            </div>
+            <div class="dom-node" aria-hidden="true">DOM</div>
+            <div class="io-card">
+              <h4>Outputs to DOM</h4>
+              <p>manipulation of text, colours etc.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p class="clear">Level complete</p>
+  <a class="btn go" href="#top">Back to top</a>
+</footer>
+
+</body>
+</html>
