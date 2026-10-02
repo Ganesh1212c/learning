@@ -913,7 +913,7 @@ counter.calls = <span class="n">0</span>;                           <span class=
 <p>They are very similar and often interchangeable. Pick a meaning for each and stay consistent, so your code is clear.</p>
 <p class="analogy"><strong>Think of it like this:</strong> <code>undefined</code> is an empty form field that nobody has filled in yet. <code>null</code> is a field where someone wrote "not applicable".</p>
 <figure class="code" data-lang="js"><figcaption><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>two kinds of "nothing"</figcaption><pre><code><span class="k">let</span> a;                 <span class="c">// never given a value</span>
-console.log(a);        <span class="c">// undefined</span>
+console.log(a);        <span class="c">// undefined (output is undefined only if declaration is let or var)</span>
 
 <span class="k">let</span> b = <span class="k">null</span>;          <span class="c">// deliberately empty</span>
 console.log(b);       <span class="c">// null</span>
